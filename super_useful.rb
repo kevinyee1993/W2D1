@@ -1,6 +1,10 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin
+    Integer(str)
+  rescue ArgumentError => e
+    return nil
+  end
 end
 
 # PHASE 3
@@ -9,25 +13,34 @@ FRUITS = ["apple", "banana", "orange"]
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
-  else 
-    raise StandardError 
-  end 
+  else
+    raise StandardError
+  end
 end
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
 
   puts "Feed me a fruit! (Enter the name of a fruit:)"
+  begin
   maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
-end  
+  reaction(maybe_fruit)
+  rescue
+  puts "we need another fruit"
+  retry
+  end
+
+end
 
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
-    @name = name
-    @yrs_known = yrs_known
-    @fav_pastime = fav_pastime
+    raise ArgumentError.new("Didn't give a name") if name = ""
+    raise "I dont know you!" if yrs_known < 5
+    raise "Didn't give a past time" if fav_pastime = ""
+      @name = name
+      @fav_pastime = fav_pastime
+      @yrs_known = yrs_known
   end
 
   def talk_about_friendship
@@ -39,8 +52,12 @@ class BestFriend
   end
 
   def give_friendship_bracelet
-    puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
+    puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me."
   end
 end
 
-
+class NewError < StandardError
+  def message
+    "wrong input!"
+  end
+end
