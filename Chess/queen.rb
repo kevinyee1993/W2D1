@@ -6,7 +6,7 @@ require_relative 'modules'
 class Queen < Piece
   attr_reader :directions
   include SlidingPiece
-  
+
 
   # def initialize
   #   super("q")
@@ -47,9 +47,6 @@ class Queen < Piece
   end
 end
 
-def inspect
-  "Q"
-end
 
 
 # a = Queen.new

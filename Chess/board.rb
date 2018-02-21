@@ -8,9 +8,9 @@ class Board
 
   def initialize
     @grid = Array.new(8){Array.new(8)}
-    #queen = Piece.new(self, [0,0])
+    queen = Piece.new(self, [0,0])
 
-    #@grid[0][0] = queen
+    @grid[0][0] = queen
   end
 
   def valid_move?(start_pos, end_pos)
@@ -26,7 +26,7 @@ class Board
 
   def populate
     @grid[1].each_index do |i|
-      @grid[1][i] = Queen.new(self, [0,0]) # Queen.new
+      @grid[1][i] = "p" # Queen.new
       @grid[6][i] = "p"
     end
   end
