@@ -1,4 +1,4 @@
-require_relative 'board.rb'
+# require_relative 'board.rb'
 require_relative 'piece.rb'
 require_relative 'modules.rb'
 
@@ -6,13 +6,13 @@ require_relative 'modules.rb'
 class Rook < Piece
   include SlidingPiece
 
-  attr_reader :current_pos, :directions
+  attr_reader :directions
 
-  def initialize
-    super('r')
-    @current_pos = [0,0]
-    
-  end
+  # def initialize
+  #   super('r')
+  #   @current_pos = [0,0]
+  #
+  # end
 
   def move
     @directions = self.horizon_array
@@ -44,5 +44,6 @@ class Rook < Piece
 
 end
 
-r = Rook.new
-p r.move
+def inspect
+  "R"
+end

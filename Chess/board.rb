@@ -1,14 +1,16 @@
 require_relative 'piece'
 require_relative 'null_piece'
+require_relative 'display'
+require_relative 'queen'
 
 class Board
   attr_reader :grid
 
   def initialize
     @grid = Array.new(8){Array.new(8)}
-    queen = Piece.new(:q)
+    #queen = Piece.new(self, [0,0])
 
-    @grid[0][0] = queen
+    #@grid[0][0] = queen
   end
 
   def valid_move?(start_pos, end_pos)
@@ -20,6 +22,13 @@ class Board
     raise "You are out of bounds!" if first_pos.first < 0 or first_pos.last < 0
     raise "You are out of bounds!" if end_pos.first < 0 or end_pos.last < 0
 
+  end
+
+  def populate
+    @grid[1].each_index do |i|
+      @grid[1][i] = Queen.new(self, [0,0]) # Queen.new
+      @grid[6][i] = "p"
+    end
   end
 
 
@@ -46,3 +55,11 @@ class Board
 
 
 end
+
+b = Board.new
+b.populate
+d = Display.new(b)
+
+d.render
+# puts "hello "
+# puts "-----------------------------"

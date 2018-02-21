@@ -1,16 +1,17 @@
 require_relative 'piece'
 require_relative 'modules'
-require_relative 'board'
+# require_relative 'board'
 
 
 class Queen < Piece
-  attr_reader :directions, :current_pos
+  attr_reader :directions
   include SlidingPiece
+  
 
-  def initialize
-    super("q")
-    @current_pos = [0,0]
-  end
+  # def initialize
+  #   super("q")
+  #   @current_pos = [0,0]
+  # end
 
   def moves
     pos_moves = []
@@ -25,7 +26,7 @@ class Queen < Piece
           track = [track.first + dir.first, track.last + dir.last]
           pos_moves << track if in_bounds?(track)
         end
-        
+
       end
 
       pos_moves
@@ -46,8 +47,9 @@ class Queen < Piece
   end
 end
 
-queen = Queen.new
-p queen.moves
+def inspect
+  "Q"
+end
 
 
 # a = Queen.new

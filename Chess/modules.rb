@@ -1,5 +1,5 @@
 
-require_relative 'board.rb'
+# require_relative 'board.rb'
 require_relative 'piece.rb'
 
 module SlidingPiece
@@ -16,6 +16,11 @@ end
   def moves()
   end
 
+  def move_dirs
+  end
+
+  def grow_unblocked(x,y)
+  end
 
 
 
